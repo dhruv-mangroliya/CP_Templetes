@@ -32,7 +32,7 @@ class segmentTree{
         if(position > mid){
             update(2*index+2, mid+1, high, position, val);
         }else{
-            update(2*index+2, low, mid, position, val);
+            update(2*index+1, low, mid, position, val);
         }
     
         seg[index] = max(seg[2*index+1], seg[2*index+2]);
