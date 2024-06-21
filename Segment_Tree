@@ -1,0 +1,63 @@
+class segmentTree{
+    private:
+
+    public:
+    vector<int> seg;
+
+    segmentTree(int n){
+        seg.resize(4*n + 1);
+    }
+
+    void build(int index, int low, int high, vector<int>& arr){
+        if(low == high){
+            seg[index] = arr[low];
+            return;
+        }
+
+        int mid = (low+high)/2;
+        build(2*index+1, low, mid, arr);
+        build(2*index+2, mid+1, high, arr);
+
+        seg[index] = max(seg[2*index+1], seg[2*index+2]);
+        return;
+    }
+
+    void update(int index, int low, int high, int position, int val){
+        if(low == high){
+            seg[index] = val;
+            return;
+        }
+
+        int mid = (low+high)/2;
+        if(position > mid){
+            update(2*index+2, mid+1, high, position, val);
+        }else{
+            update(2*index+2, low, mid, position, val);
+        }
+    
+        seg[index] = max(seg[2*index+1], seg[2*index+2]);
+        return;
+    }
+
+    int query(int index, int low, int high, int qLeft, int qRight){
+        // No overlap: 
+        // low high qLeft qRight OR 
+        // qLeft qRight low high
+        if(qRight < low || qLeft > high){
+            return 0;
+        }
+
+        //full overlap
+        // qLeft low high qRight 
+        if(qLeft <= low && high <= qRight){
+            return seg[index];
+        }
+
+        //partial overlap
+        int mid = (low + high)/2;
+        int left = query(2*index+1, low, mid, qLeft, qRight);
+        int right = query(2*index+2, mid+1, high, qLeft, qRight);
+
+        return max(left, right);
+    }
+};
