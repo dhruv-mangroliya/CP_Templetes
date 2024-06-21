@@ -1,0 +1,42 @@
+#include <iostream>
+#include<algorithm>
+#include<vector>
+#include<set>
+#include <unordered_map> 
+#include <map> 
+#include<string>
+#include<math.h>
+#include<unordered_set>
+#include<limits.h>
+typedef unsigned long long int ulii;
+typedef long long ll;
+typedef long int li;
+typedef long long int lli;
+using namespace std;
+long long int mod=1000000007;
+ 
+#define PYES cout<<"YES"<<endl
+#define PNO cout<<"NO"<<endl
+#define PYes cout<<"Yes\n"
+#define PNo cout<<"No\n"
+#define f(i,a,b) for(int i=a;i<b;i++)
+#define fe(i,a,b) for(int i=a;i<=b;i++)
+#define fr(i,a,b) for(int i=a;i>=b;i--)
+#define vi vector <i>
+#define pb push_back
+long long INT_MAXI=10000000;
+
+
+int main() {
+	#ifndef a
+        freopen("input.txt","r",stdin);
+        freopen("output.txt","w",stdout);
+    #endif
+        
+    int p;
+    cin>>p;
+    while(p--){
+        
+    }
+    return 0;
+}
