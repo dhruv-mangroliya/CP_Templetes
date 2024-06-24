@@ -1,0 +1,32 @@
+    int ultimateParent(int node, vector<int>& parent){
+        if(parent[node] == node){
+            return node;
+        }else{
+            return parent[node] = ultimateParent(parent[node],parent);
+        }
+    }
+
+    void unionByRankWithPathCompresion(int n1, int n2, vector<int>& rank, vector<int>& parent){
+        int ultPar1 = ultimateParent(n1, parent);
+        int ultPar2 = ultimateParent(n2, parent);
+        
+        if(rank[ultPar1] == rank[ultPar2]){
+            rank[ultPar1]++;
+            parent[ultPar2] = ultPar1;
+        }else if(rank[ultPar1] > rank[ultPar2]){
+            parent[ultPar2] = ultPar1;
+        }else{
+            parent[ultPar1] = ultPar2;
+        }
+        return;
+    }
+
+// Now, this is to start union set
+for(int i=1;i<edge.size();i++){
+      int node1 = ___;
+      int node2 = ___;
+      if(node1 == node2) continue;
+      if(ultimateParent(node1, parent) != ultimateParent(node2, parent)){
+            unionByRankWithPathCompresion(node1, node2, rank, parent);
+      }
+}
