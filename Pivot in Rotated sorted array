@@ -1,0 +1,18 @@
+_____________________________________
+Finding Pivot in Rotated sorted array
+_____________________________________
+
+int n=____.size();
+
+int start=0,end=n-1;
+int mid;
+while(start<end){
+    mid = (start+end)/2;
+
+    if(nums[mid] >= nums[0]){
+        start=mid+1;
+    }else{
+        end=mid;
+    }
+}
+int pivot=start;
